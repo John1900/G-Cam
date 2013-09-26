@@ -22,7 +22,7 @@ namespace G_Cam.Classes
 			}
 			else
 			{
-				double passes = roughDepth / Data.dMaxPass;
+				double passes = Math.Round(roughDepth / Data.dMaxPass, 6);
 				this.numberRoughPasses = (int)Math.Ceiling(passes);
 				depthRoughPasses = roughDepth / numberRoughPasses;
 			}

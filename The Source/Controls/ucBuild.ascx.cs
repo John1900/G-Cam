@@ -23,7 +23,6 @@ namespace G_Cam.Controls
 
 			lblErrHead.Text = "";
 			lblErrHead.Visible = false;
-
 		}
 
 		public int type()
@@ -137,5 +136,6 @@ namespace G_Cam.Controls
 		
 			return state;
 		}
+
 	}
 }

@@ -114,10 +114,15 @@ namespace G_Cam.Classes
 		public double compGrinderOffset(double alpha)
 		{
 			double r = 0;
+			Boolean compensate = false;
 
-			double aaa = Change.toDegrees(alpha);
-
-
+			// Only compute one half.  Other is identicle
+			if (alpha > Constants.R180)
+			{
+				alpha = Constants.R360 - alpha;
+				compensate = true;
+			}
+				
 			if (Math.Abs(alpha - Data.pTransitionTopGrinder.a) < 0.00001)
 			{
 				double a11 = grinderOffsetNose(alpha);
@@ -143,6 +148,15 @@ namespace G_Cam.Classes
 			{
 				r = B + W;					// Dwelling on base
 			}
+
+			if (compensate)
+			{
+				alpha = Constants.R360 - alpha;
+			}
+
+
+			//For testing
+			double dAlpha = Change.toDegrees(alpha);
 
 			return r;
 		}

@@ -16,10 +16,8 @@ namespace G_Cam.Gui
 		{
 			if (!IsPostBack)
 			{
+				
 				//loadTestData();
-
-				//Server.Transfer("~/Gui/PreviewCam.aspx");
-
 
 				ucIntroductionTab.setText("Introduction");
 				ucIntroductionTab.showCheck(true);
@@ -208,6 +206,9 @@ namespace G_Cam.Gui
 			Data.dCrossFeedStep = 1;
 
 			Data.dBacklash = 0.1;
+
+			Data.dActualBaseDiameter = 3.0;
+			Data.sActualBaseDiameter = "3.0";
 
 			Data.iPendingPanel = Constants.GEOMETRY;
 		}

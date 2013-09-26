@@ -23,6 +23,7 @@ namespace G_Cam.Classes
 			CompGeometry cg = new CompGeometry();
 			for (double alpha = 0; alpha < Constants.R360; alpha += Change.toRadians(resolution))
 			{
+				double a = Change.toDegrees(alpha);
 				double offset = cg.compGrinderOffset(alpha);
 				offsets.Add(new Polar(offset, alpha));
 			}

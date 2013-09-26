@@ -16,6 +16,12 @@ namespace G_Cam.Controls
 			{
 				lblErrHead.Text = Constants.HEADERROR;
 				lblErrHead.Visible = false;
+
+				SetupG20G21.set();
+				if(Data.sPostCode.Equals("")) { Data.sPostCode = "M30"; }
+				txtPreCode.Text = Data.sPreCode;
+				txtPostCode.Text = Data.sPostCode;
+
 			}
 		}
 

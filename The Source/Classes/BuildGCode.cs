@@ -114,86 +114,7 @@ namespace G_Cam.Classes
 			Data.sGCode = code.getCode();
 		}
 
-
-		//private void generate(CodeBlock code, double correction, double depth)
-		//{
-		//	List<Polar> targets = BuildPasses.buildRawOffsets();
-		//	List<Polar> offsets = new List<Polar>();
-
-		//	if (Data.sRotaryDirection.Equals("I"))
-		//	{
-		//		for (int i = 0; i < targets.Count; i++)
-		//		{
-		//			Polar p = targets[i];
-		//			if ((correction + depth) > p.r)
-		//			{
-		//				offsets.Add(new Polar((p.r - correction) * positionalDirection, p.aDeg));
-		//			}
-		//		}
-		//	}
-		//	else
-		//	{
-		//		for (int i = targets.Count - 1; i >= 0; i--)
-		//		{
-		//			Polar p = targets[i];
-		//			if ((correction + depth) > p.r)
-		//			{
-		//				offsets.Add(new Polar((p.r - correction) * positionalDirection, p.aDeg));
-		//			}
-		//		}
-		//	}
-
-		//	generateCode(code, offsets);
-		//}
-
-
-		// Generate the GCode skipping any moves that fall within the precision limit
-
-		//private void generateCode(CodeBlock code, List<Polar> temp)
-		//{
-		//	if (temp.Count == 0) { return; }
-
-		//	List<Polar> offsets = new List<Polar>();
-		//	double prevOffset = temp.ElementAt(0).r;
-		//	double holdAngle = temp.ElementAt(0).a;
-		//	bool haveHold = false;
-
-		//	code.retract();
-		//	if (Data.dBacklash != 0)
-		//	{
-		//		if (Data.sRotaryDirection.Equals("I")) { code.rotate(0 - Data.dBacklash); }
-		//		else { code.rotate(360 + Data.dBacklash); }
-		//	}
-		//	code.rotate(holdAngle);
-		//	code.line(prevOffset, holdAngle);		            // Go to start
-
-		//	foreach (Polar p in temp)
-		//	{
-		//		if (Math.Abs(p.r - prevOffset) < Data.dPrecision)
-		//		{
-		//			holdAngle = p.a;
-		//			haveHold = true;
-		//		}
-		//		else
-		//		{
-		//			if (haveHold)
-		//			{
-		//				code.line(prevOffset, holdAngle);
-		//				holdAngle = 0;
-		//				haveHold = false;
-		//			}
-		//			code.line(p.r, p.a);
-		//			prevOffset = p.r;
-		//		}
-		//	}
-
-		//	code.line(offsets.Last().r, temp.Last().a);			// End of track
-		//	code.retract();
-		//}
-
-
-
-
+		
         private String doPreCode()
         {
 			SetupG20G21.set();
@@ -222,7 +143,7 @@ namespace G_Cam.Classes
 			DrawAcceleration da = new DrawAcceleration();
 			da.compute();					// Lifter diameter
 
-            hdr += headLine("Built by G-CAM " + DateTime.Now);
+			hdr += headLine("Built by G-CAM " + DateTime.UtcNow + "  UTC");
 			hdr += headLine("Name: ", Data.sName);
 			hdr += headLine("Base radius: ", Data.dBaseRadius);
             hdr += headLine("Lift: ", Data.dLift);

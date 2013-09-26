@@ -19,11 +19,11 @@ namespace G_Cam.Classes
 
 		public CodeBlock()
 		{
-			positionalDirection = 1;
-			if (Data.sOffsetDirection.Equals("I")) { positionalDirection = -1; }
+			positionalDirection = -1;
+			if (Data.sOffsetDirection.Equals("I")) { positionalDirection = +1; }
 		}
 
-
+		
 		public void add(String line)
 		{
 			add(line, "");
@@ -42,29 +42,25 @@ namespace G_Cam.Classes
 
 		public void line(double r, double a)
 		{
-			String f = "F";
-
-			if (a == prevAngle)
-			{
-				f += Data.sPositionalFeed;
-			}
-			else
-			{
-				f += Data.sRotaryFeed;
-			}
+			String f = "F" + Data.sPositionalFeed;
 
 			if(f.Equals(prevF)) { f = ""; }
 			else { prevF = f; }
 
 			add("G01" + " " + 
 					Data.sRotaryAxis + Change.toString(a).PadRight(15) + 
-					Data.sOffsetAxis + Change.toString(r * positionalDirection).PadRight(15),
+					Data.sOffsetAxis + Change.toString(r * positionalDirection).PadRight(15) + 
 					f);
 		}
 	
 		public void rotate(double angle)
 		{
-			add( "G00" + " " + Data.sRotaryAxis + Change.toString(angle) );
+			String f = "F" + Data.sRotaryFeed;
+
+			if (f.Equals(prevF)) { f = ""; }
+			else { prevF = f; }
+
+			add("G00" + " " + Data.sRotaryAxis + Change.toString(angle).PadRight(15) + f);
 			prevAngle = angle;
 		}
 

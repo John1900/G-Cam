@@ -145,13 +145,15 @@ namespace G_Cam.Classes
 		private double correctedR(int index)
 		{
 			// Negative values cut deeper
-			double r = 0 - (offsets.ElementAt(index).r - Data.dWheelDiameter / 2 - Data.dBaseRadius - grinderAdjust);
+			double r = (offsets.ElementAt(index).r - Data.dWheelDiameter / 2 - Data.dBaseRadius - Data.dLift 
+										- (Data.dBlankDiameter / 2 - Data.dBaseRadius - Data.dLift) 
+										- grinderAdjust);
 
 			if (newDepth != 0)
 			{
 				if (r < newDepth) { r = newDepth; }
 			}
-
+			
 			return r;
 		}
 
