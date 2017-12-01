@@ -47,28 +47,28 @@ namespace G_Cam.Classes
 
 		public void generateNextPass(double newDepth, double grinderAdjust)
 		{
-			if (Data.sCrossAxis.Equals(""))
+            this.newDepth = newDepth;
+            if (Data.sCrossAxis.Equals(""))
 			{
-				pass(newDepth, grinderAdjust);
+				pass(grinderAdjust);
 			}
 			else
 			{
 				for (double c = 0; c <= Data.dCrossFeedEnd; c += Data.dCrossFeedStep)
 				{
 					code.setCrossFeed(c);
-					pass(newDepth, grinderAdjust);
+					pass(grinderAdjust);
 				}
 			}
 		}
 
 
-		public void pass(double newDepth, double grinderAdjust)
+		public void pass(double grinderAdjust)
 		{
-			if (offsets.Count == 0) { return; }
+            code.retract();
 
-			code.retract();
+            if (offsets.Count == 0) { return; }
 
-			this.newDepth = newDepth;
 			this.grinderAdjust = grinderAdjust;
 
 			// Skip any leadup we don't need to grind
@@ -139,7 +139,6 @@ namespace G_Cam.Classes
 				code.line(correctedR(upperLimit), offsets.ElementAt(upperLimit).aDeg);			// End of track
 			}
 			code.retract();
-			currentDepth = newDepth;
 		}
 
 		private double correctedR(int index)
