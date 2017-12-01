@@ -49,7 +49,7 @@
                                 <td valign="top" colspan="2">
                                     <em style="color: #CC0000">This program builds G Code to grind a cam.<br />
                                     <br />
-                                    <strong>RELEASE 1.0&nbsp; Use with care!!&nbsp; Report errors to <a href="mailto:tsmewebmaster@gmail.com">tsmewebmaster@gmail.com</a></strong><br />
+                                    <strong>RELEASE 1.1&nbsp; Use with care!!&nbsp; Report errors to <a href="mailto:tsmewebmaster@gmail.com">tsmewebmaster@gmail.com</a></strong><br />
                                     </em>
                                 </td>
                             </tr>
